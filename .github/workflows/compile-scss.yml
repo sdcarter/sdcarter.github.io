@@ -67,15 +67,16 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site
+      - name: List artifact contents
+        run: |
+          echo 'Contents of workspace:'
+          ls -la
+          echo 'Contents of site artifact:'
+          ls -la site || true
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
-      - name: Upload artifact to Pages
-        uses: actions/upload-pages-artifact@v1
+      - name: Publish site to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: .
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
