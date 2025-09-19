@@ -1,11 +1,3 @@
-/*
-Template Name: Split
-Author: One Page Love
-Author URI: https://onepagelove.com
-Template URI: https://onepagelove.com/split
-Description: Split is a centrally-divided layout for a professional online presence with a big image or video left with alongside content.
-*/
-/* -- CSS Reset -- */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
 @import url("https://fonts.googleapis.com/css?family=Lora");
 html, body, div, span, applet, object, iframe,
@@ -26,284 +18,338 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block; }
+  display: block;
+}
 
 body {
-  line-height: 1; }
+  line-height: 1;
+}
 
 ol, ul {
-  list-style: none; }
+  list-style: none;
+}
 
 blockquote, q {
-  quotes: none; }
+  quotes: none;
+}
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: '';
-  content: none; }
+  content: "";
+  content: none;
+}
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -moz-font-feature-settings: "liga" on;
-  font-feature-settings: "liga" on;
-  margin: 0; }
+  font-feature-settings: "liga" 1;
+  margin: 0;
+}
 
 img.alignright {
-  float: right; }
-
+  float: right;
+}
 img.alignleft {
-  float: left; }
-
+  float: left;
+}
 img.aligncenter {
   clear: both;
   display: block;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;
+}
 
 body {
   background-color: #FFFFFF;
-  border-style: none; }
+  border-style: none;
+}
 
 body,
 p,
 a,
 a:hover {
-  color: #000000; }
+  color: #000000;
+}
 
 a,
 a:hover {
   text-decoration: none;
   border: none;
   border-style: none;
-  box-shadow: none; }
+  box-shadow: none;
+}
 
-/* -- Content -- */
-@-webkit-keyframes fadein {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
 @keyframes fadein {
   from {
-    opacity: 0; }
+    opacity: 0;
+  }
   to {
-    opacity: 1; } }
-
+    opacity: 1;
+  }
+}
 html {
-  background-color: #061C30; }
+  background-color: #061C30;
+}
 
 body.page-template-page-fullsingle-split {
   background-color: #061C30;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 21px;
   line-height: 33px;
   letter-spacing: -0.2px;
   color: #848d96;
-  -webkit-animation: fadein 2s;
-          animation: fadein 2s; }
-  body.page-template-page-fullsingle-split p {
-    color: #848d96; }
+  animation: fadein 2s;
+}
+body.page-template-page-fullsingle-split p {
+  color: #848d96;
+}
+
+html {
+  background-color: #061C30;
+}
+
+body.page-template-page-fullsingle-split {
+  font-family: "Montserrat", sans-serif;
+  color: #848d96;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 
 .fs-split {
   width: 100vw;
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
-  @media (max-width: 800px) {
-    .fs-split {
-      height: auto;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; } }
-  .fs-split .split-image {
-    width: 50%;
-    height: 100vh;
-    background-image: url("../../images/background.jpg");
-    background-position: center center;
-    background-size: cover; }
-    @media (max-width: 800px) {
-      .fs-split .split-image {
-        height: 80vh;
-        width: 100%; } }
-  .fs-split .split-content {
-    width: 50%;
-    min-height: 100vh;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    overflow: auto; }
-    @media (max-width: 800px) {
-      .fs-split .split-content {
-        width: 100%;
-        height: auto; } }
-    .fs-split .split-content .split-content-vertically-center {
-      padding: 80px;
-      max-width: 640px;
-      margin-top: auto;
-      margin-bottom: auto; }
-      @media (max-width: 1200px) {
-        .fs-split .split-content .split-content-vertically-center {
-          padding: 60px; } }
-      @media (max-width: 800px) {
-        .fs-split .split-content .split-content-vertically-center {
-          padding: 40px; } }
+  display: flex;
+}
+
+.split-image {
+  width: 50%;
+  height: 100vh;
+  background-image: url("../../images/background.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+
+.split-content {
+  width: 50%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.split-content .split-content-vertically-center {
+  padding: 80px;
+  max-width: 640px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
 
 .split-intro {
   font-weight: 600;
   font-size: 64px;
   line-height: 80px;
-  letter-spacing: -2px; }
-  .split-intro h1 {
-    font-weight: 400;
-    text-transform: uppercase;
-    font-size: 16px;
-    line-height: 16px;
-    margin-bottom: 40px;
-    letter-spacing: 0.4px;
-    color: #47bec7; }
-  .split-intro .tagline {
-    color: #CCCCCC; }
+  letter-spacing: -2px;
+}
+
+.split-intro h1 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 16px;
+  margin-bottom: 40px;
+  letter-spacing: 0.4px;
+  color: #47bec7;
+}
+
+.split-intro .tagline {
+  color: #CCCCCC;
+}
 
 .split-bio {
   padding: 40px 0 40px 0;
-  font-family: 'Lora', serif; }
-  @media (max-width: 1200px) {
-    .split-bio {
-      padding: 30px 0; } }
-  @media (max-width: 800px) {
-    .split-bio {
-      padding: 20px 0; } }
-  .split-bio p {
-    color: #848d96; }
-  .split-bio a {
-    color: #848d96;
-    transition-duration: 0.5s;
-    border-bottom: 1px dotted #848d96; }
-    .split-bio a:hover {
-      color: #CA486d;
-      transition-duration: 0.1s;
-      border-bottom: 1px dotted #CA486d; }
+  font-family: "Lora", serif;
+}
+
+.split-bio p {
+  color: #848d96;
+}
+
+.split-bio a {
+  color: #848d96;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.12);
+}
+
+.split-lists {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+
+.split-lists .split-list {
+  flex: 1 1 0;
+  max-width: 320px;
+  text-align: center;
+}
+
+.split-lists .split-list h3 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 11px;
+  line-height: 11px;
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+.split-lists .split-list ul li {
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 6px;
+}
+
+.split-lists .split-list ul li a {
+  color: rgba(255, 255, 255, 0.86);
+}
 
 .split-cv {
-  padding: 40px 0 40px 0;
-  font-family: 'Lora', serif; }
-  @media (max-width: 1200px) {
-    .split-bio {
-      padding: 30px 0; } }
-  @media (max-width: 800px) {
-    .split-bio {
-      padding: 20px 0; } }
-  .split-bio p {
-    color: #848d96; }
-  .split-bio a {
-    color: #848d96;
-    transition-duration: 0.5s;
-    border-bottom: 1px dotted #848d96; }
-    .split-bio a:hover {
-      color: #CA486d;
-      transition-duration: 0.1s;
-      border-bottom: 1px dotted #CA486d; }
-
-.split-lists{display:flex;justify-content:space-between;align-items:flex-start;gap:28px;margin-bottom:24px}
-.split-lists .split-list{flex:1 1 0;max-width:320px;text-align:center}
-.split-lists .split-list h3{font-weight:400;text-transform:uppercase;font-size:11px;line-height:11px;margin-bottom:18px;color:#848d96;letter-spacing:2px;opacity:0.6}
-.split-lists .split-list ul li{font-size:16px;line-height:26px;margin-bottom:6px}
-.split-lists .split-list ul li a{color:#848d96;transition-duration:0.5s}
-.split-lists .split-list ul li a:hover{color:#CA486d;transition-duration:0.1s}
-@media (max-width:800px){
-  .split-lists{flex-direction:column;align-items:flex-start}
-  .split-lists .split-list{text-align:left;max-width:none;width:100%;margin-bottom:18px}
+  color: #848d96;
 }
 
-.split-credit {
-  opacity: 0.4; }
-  .split-credit p {
-    font-size: 12px;
-    line-height: 14px; }
-    .split-credit p a {
-      color: #848d96; }
+.cv-heading {
+  font-family: "Montserrat", sans-serif;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
 
-.split-video {
-  overflow: hidden;
-  position: relative; }
-
-.video-wrap {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); }
-
-.video-container {
+.cv-wrap {
   position: relative;
-  overflow: hidden;
-  height: 56.25vw;
-  width: 100vw; }
-  @media (max-aspect-ratio: 16 / 9) {
-    .video-container {
-      height: 100vh;
-      width: 177.7777777778vh; } }
-
-.video-container iframe,
-.video-container object,
-.video-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
-
-video.video {
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: 50% 50%;
-     object-position: 50% 50%;
-  width: 100%;
-  height: 100%; }
-
-/* ---- CV timeline styling (grid rows, white text, hoverable dots) ---- */
-.split-cv{color:#fff}
-.cv-heading{font-family: 'Montserrat', sans-serif; color:rgba(255,255,255,0.85); text-transform:uppercase; font-size:12px; letter-spacing:2px; margin-bottom:18px}
-.cv-wrap{position:relative}
-.cv-row{display:grid;grid-template-columns:28% 1fr;gap:28px;align-items:start;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
-.cv-left{padding-right:8px}
-.cv-item{margin-bottom:0}
-.cv-company{font-weight:700;color:#ffffff;margin-bottom:6px;font-size:20px}
-.cv-location{color:rgba(255,255,255,0.72);font-size:13px;margin-bottom:6px}
-.cv-dates{color:rgba(255,255,255,0.6);font-size:12px}
-
-/* full-height vertical line centered between columns */
-.cv-wrap:before{content:'';position:absolute;left:calc(28% + 14px);top:0;bottom:0;width:2px;background:rgba(255,255,255,0.08)}
-
-.cv-right{position:relative;padding-left:28px}
-.cv-dot{position:absolute;left:-22px;top:12px;width:14px;height:14px;border-radius:50%;background:#2b2626;border:4px solid #f3d0cf;box-shadow:0 0 0 3px rgba(243,208,207,0.06);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-
-.cv-detail{position:relative}
-.cv-detail h4{margin:0 0 12px;color:#ffffff}
-.cv-detail ul{color:rgba(255,255,255,0.86);list-style:disc;margin-left:20px}
-
-/* hover / focus interactions */
-.cv-row:hover .cv-dot,.cv-row:focus-within .cv-dot{transform:scale(1.15);box-shadow:0 0 0 8px rgba(243,208,207,0.12);border-color:#ffdfe2}
-
-@media (max-width:800px){
-  .cv-row{grid-template-columns:1fr}
-  .cv-wrap:before{left:8px}
-  .cv-dot{left:-6px}
 }
+
+.cv-row {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  gap: 28px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.cv-left {
+  padding-right: 8px;
+}
+
+.cv-company {
+  font-weight: 700;
+  color: #848d96;
+  margin-bottom: 6px;
+  font-size: 20px;
+}
+
+.cv-location {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.cv-dates {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.cv-wrap:before {
+  content: "";
+  position: absolute;
+  left: calc(28% + 14px);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cv-right {
+  position: relative;
+  padding-left: 28px;
+}
+
+.cv-dot {
+  position: absolute;
+  left: -22px;
+  top: 12px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #2b2626;
+  border: 4px solid #f3d0cf;
+  box-shadow: 0 0 0 3px rgba(243, 208, 207, 0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.cv-detail {
+  position: relative;
+}
+
+.cv-detail h4 {
+  margin: 0 0 12px;
+  color: #848d96;
+}
+
+.cv-detail ul {
+  color: rgba(255, 255, 255, 0.86);
+  list-style: disc;
+  margin-left: 20px;
+}
+
+.cv-row:hover .cv-dot, .cv-row:focus-within .cv-dot {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 8px rgba(243, 208, 207, 0.12);
+  border-color: #ffdfe2;
+}
+
+@media (max-width: 800px) {
+  .cv-row {
+    grid-template-columns: 1fr;
+  }
+  .cv-wrap:before {
+    left: 8px;
+  }
+  .cv-dot {
+    left: -6px;
+  }
+}
+/*
+Template Name: Split
+Author: One Page Love
+Author URI: https://onepagelove.com
+Template URI: https://onepagelove.com/split
+Description: Split is a centrally-divided layout for a professional online presence with a big image or video left with alongside content.
+*/
+/* -- old imports removed; use _base.scss which imports _reset and _content -- */
