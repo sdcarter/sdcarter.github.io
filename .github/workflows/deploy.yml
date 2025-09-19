@@ -1,0 +1,36 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ 'master' ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: |
+            index.html
+            404.html
+            sitemap.xml
+            keybase.txt
+            LICENSE
+            assets/**
+            images/**
+            favicon.png
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
