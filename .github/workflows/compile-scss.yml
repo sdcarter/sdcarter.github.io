@@ -57,7 +57,15 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: site
-          path: .
+          path: |
+            index.html
+            404.html
+            sitemap.xml
+            keybase.txt
+            LICENSE
+            assets/**
+            images/**
+            favicon.png
 
   deploy:
     needs: build
@@ -67,6 +75,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site
+          path: site
       - name: List artifact contents
         run: |
           echo 'Contents of workspace:'
@@ -74,9 +83,27 @@ jobs:
           echo 'Contents of site artifact:'
           ls -la site || true
 
-      - name: Publish site to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Verify site artifact
+        run: |
+          echo 'Disk usage for site:'
+          du -sh site || true
+          echo 'Recursive file list (first 200 lines):'
+          find site -type f | sed -n '1,200p' || true
+          if [ -f site/index.html ]; then
+            echo 'OK: site/index.html exists'
+          else
+            echo 'ERROR: site/index.html is missing! The artifact may be empty or packaged incorrectly.'
+            echo 'Printing site top-level contents:'
+            ls -la site || true
+          fi
+
+      - name: Setup Pages (configure)
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact to Pages
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          publish_branch: gh-pages
+          path: ./site
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
