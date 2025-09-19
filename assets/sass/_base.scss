@@ -1,0 +1,12 @@
+@import "_reset";
+@import "_vars";
+@import "_content";
+
+html { background-color: $color-background; }
+body.page-template-page-fullsingle-split {
+  font-family: 'Montserrat', sans-serif;
+  color: $color-text;
+}
+
+// Utility
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}

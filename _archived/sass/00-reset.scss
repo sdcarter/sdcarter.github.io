@@ -1,3 +1,6 @@
+// Archived original: 00-reset.scss
+// (moved to _archived/sass to preserve original sources)
+
 //-------------------------------------------------------------------------------
 // Eric Meyer’s CSS Reset
 //-------------------------------------------------------------------------------
@@ -60,6 +63,7 @@ table {
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
 	-moz-font-feature-settings: "liga" on;
+	font-feature-settings: "liga" 1;
 	margin: 0;
 }
 

@@ -1,3 +1,51 @@
+@import "_vars";
+@import "_base";
+
+// Split layout styles (converted from compiled CSS)
+.fs-split{width:100vw;height:100vh;display:flex}
+
+.split-image{width:50%;height:100vh;background-image:url('../../images/background.jpg');background-position:center center;background-size:cover}
+
+.split-content{width:50%;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:auto}
+.split-content .split-content-vertically-center{padding:80px;max-width:640px;margin-top:auto;margin-bottom:auto}
+
+.split-intro{font-weight:600;font-size:64px;line-height:80px;letter-spacing:-2px}
+.split-intro h1{font-weight:400;text-transform:uppercase;font-size:16px;line-height:16px;margin-bottom:40px;letter-spacing:0.4px;color:#47bec7}
+.split-intro .tagline{color:#CCCCCC}
+
+.split-bio{padding:40px 0 40px 0;font-family:'Lora',serif}
+.split-bio p{color:$color-text}
+.split-bio a{color:$color-text;border-bottom:1px dotted rgba(255,255,255,0.12)}
+
+// split-lists converted to SCSS using variables
+.split-lists{display:flex;justify-content:space-between;align-items:flex-start;gap:28px;margin-bottom:24px}
+.split-lists .split-list{flex:1 1 0;max-width:320px;text-align:center}
+.split-lists .split-list h3{font-weight:400;text-transform:uppercase;font-size:11px;line-height:11px;margin-bottom:18px;color:rgba(255,255,255,0.72);letter-spacing:2px;opacity:0.6}
+.split-lists .split-list ul li{font-size:16px;line-height:26px;margin-bottom:6px}
+.split-lists .split-list ul li a{color:rgba(255,255,255,0.86)}
+
+// CV timeline
+.split-cv{color:$color-text}
+.cv-heading{font-family:'Montserrat',sans-serif;color:rgba(255,255,255,0.85);text-transform:uppercase;font-size:12px;letter-spacing:2px;margin-bottom:18px}
+.cv-wrap{position:relative}
+.cv-row{display:grid;grid-template-columns:28% 1fr;gap:28px;align-items:start;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+.cv-left{padding-right:8px}
+.cv-company{font-weight:700;color:$color-text;margin-bottom:6px;font-size:20px}
+.cv-location{color:$color-muted;font-size:13px;margin-bottom:6px}
+.cv-dates{color:$color-muted-2;font-size:12px}
+.cv-wrap:before{content:'';position:absolute;left:calc(28% + 14px);top:0;bottom:0;width:2px;background:rgba(255,255,255,0.08)}
+.cv-right{position:relative;padding-left:28px}
+.cv-dot{position:absolute;left:-22px;top:12px;width:14px;height:14px;border-radius:50%;background:$color-dot-bg;border:4px solid $color-accent;box-shadow:0 0 0 3px rgba(243,208,207,0.06);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.cv-detail{position:relative}
+.cv-detail h4{margin:0 0 12px;color:$color-text}
+.cv-detail ul{color:rgba(255,255,255,0.86);list-style:disc;margin-left:20px}
+.cv-row:hover .cv-dot,.cv-row:focus-within .cv-dot{transform:scale(1.15);box-shadow:0 0 0 8px rgba(243,208,207,0.12);border-color:#ffdfe2}
+
+@media (max-width:800px){
+  .cv-row{grid-template-columns:1fr}
+  .cv-wrap:before{left:8px}
+  .cv-dot{left:-6px}
+}
 /*
 Template Name: Split
 Author: One Page Love
