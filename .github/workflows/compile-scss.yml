@@ -1,4 +1,4 @@
-name: Compile SCSS
+name: Build and deploy
 
 on:
   push:
@@ -11,32 +11,70 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine if SCSS changed
+        id: check
+        run: |
+          CHANGED=false
+          echo "Event: $GITHUB_EVENT_NAME"
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            # compare the push range
+            if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -qE '(^assets/sass/|^assets/sass$|^assets/sass/split.scss)'; then
+              CHANGED=true
+            fi
+          else
+            # manual runs / other events -> compile by default
+            CHANGED=true
+          fi
+          echo "changed=$CHANGED" >> $GITHUB_OUTPUT
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Install sass CLI
+        if: steps.check.outputs.changed == 'true'
         run: |
           npm ci --no-audit --progress=false || true
           npm install -g sass@1.78.0
 
-      - name: Compile SCSS
+      - name: Compile SCSS -> CSS
+        if: steps.check.outputs.changed == 'true'
         run: |
           sass assets/sass/split.scss:assets/css/split.css --no-source-map --style=expanded
 
-      - name: Commit compiled CSS
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/css/split.css || true
-          if ! git diff --staged --quiet; then
-            git commit -m "ci: compile SCSS -> CSS [skip ci]" || true
-            git push
-          else
-            echo "No changes to compiled CSS"
-          fi
+      - name: Upload repository as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: needs.build.outputs.changed == 'true' || github.event_name == 'workflow_dispatch' || true
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact to Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
