@@ -48,3 +48,13 @@
 }
 
 /* -- old imports removed; use _base.scss which imports _reset and _content -- */
+
+/* Footer credit styling */
+.split-credit {
+  text-align: center;
+  margin-top: 24px;
+  p, a {
+    color: $color-text !important;
+    font-style: italic;
+  }
+}
