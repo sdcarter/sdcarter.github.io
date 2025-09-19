@@ -1,0 +1,16 @@
+version: '3'
+
+tasks:
+  build-image:
+    desc: Build the sass docker image
+    cmds:
+      - ${CONTAINER_CMD:-podman} build -t sdcarter/sass:latest -f .docker/sass/Dockerfile .
+
+  compile:
+    desc: Compile SCSS to CSS inside a Docker container (no npm on host)
+    deps: [ build-image ]
+    cmds:
+      - mkdir -p assets/css
+      - ${CONTAINER_CMD:-podman} run --rm -v "${PWD}:/work" -w "/work" sdcarter/sass:latest assets/sass/split.scss:assets/css/split.css --no-source-map --style=expanded
+    env:
+      TASK_COMPILE: "true"

@@ -345,11 +345,4 @@ body.page-template-page-fullsingle-split {
     left: -6px;
   }
 }
-/*
-Template Name: Split
-Author: One Page Love
-Author URI: https://onepagelove.com
-Template URI: https://onepagelove.com/split
-Description: Split is a centrally-divided layout for a professional online presence with a big image or video left with alongside content.
-*/
 /* -- old imports removed; use _base.scss which imports _reset and _content -- */
